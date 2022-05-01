@@ -1,20 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class ObjCtrl : MonoBehaviour//, IPointerDownHandler
+public class ObjCtrl : MonoBehaviour
 {
+    private Vector3 mPositionOffset;
+    private Vector3 mOriginPosition;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnMouseDown()
     {
-        
+        mOriginPosition = Camera.main.WorldToScreenPoint(transform.position);
+        mPositionOffset = transform.position - GetMouseWorldPosition();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDrag()
     {
-        
+        transform.position = GetMouseWorldPosition() + mPositionOffset;
+    }
+
+    private Vector3 GetMouseWorldPosition()
+    {
+        var mousePoint = Input.mousePosition;
+        mousePoint.z = mOriginPosition.z;
+        return Camera.main.ScreenToWorldPoint(mousePoint);
     }
 }
