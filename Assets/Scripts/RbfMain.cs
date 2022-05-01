@@ -27,9 +27,8 @@ public class RbfMain : MonoBehaviour
             var r = colorsMatrix[i, 0];
             var g = colorsMatrix[i, 1];
             var b = colorsMatrix[i, 2];
-            var a = colorsMatrix[i, 3];
             var mat = calObjects[i].GetComponent<Renderer>().material;
-            mat.color = new Color(r, g, b, a);
+            mat.color = new Color(r, g, b);
         }
     }
 
@@ -50,14 +49,13 @@ public class RbfMain : MonoBehaviour
     Matrix<float> GetColorsMatrix(Transform[] objs)
     {
         var builder = Matrix<float>.Build;
-        Matrix<float> m = builder.Dense(objs.Length, 4);
+        Matrix<float> m = builder.Dense(objs.Length, 3);
         for (var i = 0; i < objs.Length; i++)
         {
             var color = objs[i].GetComponent<Renderer>().material.color;
             m[i, 0] = color.r;
             m[i, 1] = color.g;
             m[i, 2] = color.b;
-            m[i, 3] = color.a;
         }
         return m;
     }
