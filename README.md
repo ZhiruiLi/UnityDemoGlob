@@ -4,5 +4,6 @@
 
 ![RBF Demo](./Resources/rbf_demo.gif)
 
-详情参考博客：[RBF 插值的理论与应用](https://zhiruili.github.io/posts/rbf-interpolation/)。
+- 代码：[Assets/RBF](https://github.com/ZhiruiLi/UnityDemoGlob/tree/master/Assets/RBF)。
+- 博客：[RBF 插值的理论与应用](https://zhiruili.github.io/posts/rbf-interpolation/)。
 
